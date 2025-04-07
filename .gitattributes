@@ -1,2 +1,13 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+node_modules/* 
+.gitignore
+.DS_Store
+.vscode
+.env
+backend/node_modules/*
+backend/.gitignore
+backend/.DS_Store
+backend/.vscode
+backend/.env
+backend/package-lock.json
