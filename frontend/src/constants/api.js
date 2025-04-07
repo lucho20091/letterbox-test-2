@@ -1,1 +1,1 @@
-export const API = 'no' // test
+export const API = '' // test

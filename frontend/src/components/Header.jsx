@@ -1,14 +1,39 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { useState, useEffect, useContext } from 'react'
-
+import { UserContext } from '../context/UserContext'
+import { API } from '../constants/api'
 export default function Header() {
     const [isLoggedIn, setIsLoggedIn] = useState(false)
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
     const navigate = useNavigate()
+    const { userAuthenticated, loading: userLoading } = useContext(UserContext)
     
     function toggleMobileMenu() {
         setIsMobileMenuOpen(!isMobileMenuOpen)
     }
+
+    useEffect(() => {
+        if (!userLoading && userAuthenticated) {
+            setIsLoggedIn(true)
+        }
+    }, [userAuthenticated, userLoading])
+
+    const handleLogout = async () => {
+        try {
+          const response = await fetch(API === 'test' ? 'http://localhost:3000/api/logout' : '/api/logout', {
+            method: 'POST',
+            credentials: 'include'
+          });
+          if (response.ok) {
+            setIsLoggedIn(false);
+            setIsMobileMenuOpen(false);
+            navigate('/');
+            window.location.reload();
+          }
+        } catch (error) {
+          console.error('Logout failed:', error);
+        }
+      }
 
     return (
         <header className="relative bg-gradient-to-r from-indigo-950 to-violet-950 text-white shadow-lg py-4">
@@ -40,14 +65,14 @@ export default function Header() {
                     {isLoggedIn ? (
                         <div className="flex items-center">      
                         <Link
-                            to="/profile/lucho20091"
+                            to={`/profile/${userAuthenticated?.username}`}
                             className="flex items-center justify-center px-3 py-2 rounded-md text-sm font-medium hover:bg-indigo-800/40 transition-colors">
                             <img 
-                                src="https://static-cdn.jtvnw.net/jtv_user_pictures/114392b2-2ef3-4a7a-b582-69190c333012-profile_image-70x70.png" 
+                                src={userAuthenticated?.image}
                                 alt="profile picture"
                                 className="w-8 h-8 rounded-full border-4 border-purple-400"
                             />
-                            <span className="ml-1">lucho20091</span>
+                            <span className="ml-1">{userAuthenticated?.username}</span>
                         </Link>                  
                         <button 
                             className="px-3 py-2 rounded-md text-sm font-medium hover:bg-indigo-800/40 transition-colors">
@@ -92,16 +117,20 @@ export default function Header() {
                 <nav className="px-4 py-3">
                     <Link 
                         to="/" 
+                        onClick={() => setIsMobileMenuOpen(false)}
                         className="block px-4 py-2 rounded-md text-sm font-medium hover:bg-indigo-800/40 transition-colors">
+                        
                         Home
                     </Link>
                     <Link 
                         to="/profiles" 
+                        onClick={() => setIsMobileMenuOpen(false)}
                         className="block px-4 py-2 rounded-md text-sm font-medium hover:bg-indigo-800/40 transition-colors">
                         Profiles
                     </Link>
                     <Link    
                         to="/watchlist" 
+                        onClick={() => setIsMobileMenuOpen(false)}
                         className="block px-4 py-2 rounded-md text-sm font-medium hover:bg-indigo-800/40 transition-colors">
                         Watchlist
                     </Link>
@@ -109,23 +138,30 @@ export default function Header() {
                         <>
                         <div className="">
                             <Link 
-                                to="/profile/lucho20091"
+                                to={`/profile/${userAuthenticated?.username}`}
+                                onClick={() => setIsMobileMenuOpen(false)}
                                 className="block px-4 py-2 rounded-md text-sm font-medium hover:bg-indigo-800/40 transition-colors flex items-center">
                                 <img    
-                                src="https://static-cdn.jtvnw.net/jtv_user_pictures/114392b2-2ef3-4a7a-b582-69190c333012-profile_image-70x70.png" 
+                                src={userAuthenticated?.image}
                                 alt="profile picture"
                                 className="w-6 h-6 rounded-full border-4 border-purple-400 "
                             />
-                            <span className="ml-1">lucho20091</span>
+                            <span className="ml-1">{userAuthenticated?.username}</span>
                             </Link>
                         </div>
                         <button 
+                            onClick={handleLogout}
                             className="px-4 py-2 rounded-md text-sm font-medium hover:bg-indigo-800/40 transition-colors w-full text-left">
                             Logout
                         </button>
                         </>
                     ) : (
-                        <Link to="/login" className="block px-4 py-2 rounded-md text-sm font-medium hover:bg-indigo-800/40 transition-colors">Login</Link>
+                        <Link 
+                            to="/login" 
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            className="block px-4 py-2 rounded-md text-sm font-medium hover:bg-indigo-800/40 transition-colors">
+                            Login
+                        </Link>
                     )}      
                 </nav>
             </div>
