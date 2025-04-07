@@ -1,12 +1,12 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { useState, useEffect, useContext } from 'react'
-import { UserContext } from '../context/UserContext'
+import { AuthContext } from '../contexts/AuthContext'
 import { API } from '../constants/api'
 export default function Header() {
     const [isLoggedIn, setIsLoggedIn] = useState(false)
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
     const navigate = useNavigate()
-    const { userAuthenticated, loading: userLoading } = useContext(UserContext)
+    const { userAuthenticated, loading: userLoading } = useContext(AuthContext)
     
     function toggleMobileMenu() {
         setIsMobileMenuOpen(!isMobileMenuOpen)
