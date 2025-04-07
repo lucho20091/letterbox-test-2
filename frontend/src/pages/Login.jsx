@@ -56,7 +56,7 @@ function Login() {
     <div className="grow grid place-items-center">
         <form 
             onSubmit={handleSubmit} 
-            className="flex flex-col gap-3  md:p-12 p-4 rounded-lg shadow-2xl w-full max-w-md">
+            className="flex flex-col gap-3 md:p-12 p-6 rounded-lg shadow-2xl w-[90%] max-w-md">
             <h1 className="text-2xl font-bold text-center">Login</h1>
             <div className="flex flex-col">
                 <label htmlFor="username" className="">Username</label>

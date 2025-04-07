@@ -2,7 +2,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useState, useEffect, useContext } from 'react'
 
 export default function Header() {
-    const [isLoggedIn, setIsLoggedIn] = useState(true)
+    const [isLoggedIn, setIsLoggedIn] = useState(false)
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
     const navigate = useNavigate()
     
