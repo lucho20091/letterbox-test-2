@@ -13,8 +13,12 @@ export default function MainCard({ movie, comments}) {
         <div className="p-4 md:p-0 md:h-80 md:overflow-hidden rounded-lg shadow-lg md:shadow-lg bg-gradient-to-br from-indigo-950 to-violet-950
          mt-4 md:mt-8 max-w-screen-lg mx-auto">
             <div className="group flex flex-col md:flex-row">
-                <img src={movie.image} alt={movie.title} className="h-full object-cover mx-auto md:mx-0" />
-                <div className="p-4 pb-0 md:p-8 flex flex-col items-center md:items-start">
+                <img 
+                    src={movie.image} 
+                    alt={movie.title} 
+                    className="h-96 md:h-full w-full md:w-auto object-cover object-top mx-auto md:mx-0" 
+                    />
+                <div className="pt-4 md:p-8 flex flex-col items-start md:items-start">
                     <h1 className="text-white text-2xl font-bold mb-2">{movie.titleYear}</h1>
                     <div className="flex items-center mb-2">
                         <p className="text-white font-bold text-2xl mr-2">Juli:</p>

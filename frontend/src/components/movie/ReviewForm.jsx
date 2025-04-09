@@ -8,7 +8,7 @@ export default function ReviewForm({ userAuthenticated, formData, handleChange, 
                     <input 
                     type="text" 
                     placeholder="Write a comment..." 
-                    className="flex-1 p-2 bg-indigo-950/50 rounded-lg text-white placeholder-indigo-500 transition-all duration-300 focus:ring-2 focus:ring-indigo-500 focus:outline-none" 
+                    className="flex-1 min-w-36 p-2 bg-indigo-950/50 rounded-lg text-white placeholder-indigo-500 transition-all duration-300 focus:ring-2 focus:ring-indigo-500 focus:outline-none" 
                     value={formData.comment}
                     onChange={handleChange}
                     disabled={!userAuthenticated}
