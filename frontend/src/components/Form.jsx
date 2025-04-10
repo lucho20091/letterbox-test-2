@@ -7,7 +7,7 @@ export default function Form({ type, handleSubmit, loading, formData, handleChan
         <div className="grow grid place-items-center">
         <form 
             onSubmit={handleSubmit} 
-            className="flex flex-col gap-3 md:p-12 p-6 rounded-lg shadow-2xl w-[90%] max-w-md">
+            className="flex flex-col gap-3 md:p-12 p-6 rounded-lg shadow-2xl w-[90%] max-w-md border-2 border-gray-300">
             <h1 className="text-2xl font-bold text-center">{type === 'login' ? 'Login' : 'Sign Up'}</h1>
             <div className="flex flex-col">
                 <label htmlFor="username" className="">Username</label>
@@ -17,7 +17,7 @@ export default function Form({ type, handleSubmit, loading, formData, handleChan
                     placeholder="Username" 
                     value={formData.username} 
                     onChange={handleChange} 
-                    className="rounded-md p-2"
+                    className="rounded-md p-2 bg-sky-100"
                     />
             </div>
             <div className="flex flex-col">
@@ -28,7 +28,7 @@ export default function Form({ type, handleSubmit, loading, formData, handleChan
                     placeholder="Password" 
                     value={formData.password} 
                     onChange={handleChange} 
-                    className="rounded-md p-2"
+                    className="rounded-md p-2 bg-sky-100"
                 />
             </div>
             <button 
