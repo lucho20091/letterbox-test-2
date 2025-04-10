@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import { API } from '../constants/api'
 import ProfileData from '../components/single-profile-page/ProfileData'
 import MoviesProfile from '../components/single-profile-page/MoviesProfile'
+import { ToastContainer } from 'react-toastify'
 export default function Profile(){
     const [profile, setProfile] = useState(null)
     const [reviews, setReviews] = useState([])
@@ -65,8 +66,9 @@ export default function Profile(){
                 <div className="pt-0 md:pt-8">
                     <ProfileData profile={profile} reviews={reviews} watchlist={watchlist} />
                 </div>
-                <MoviesProfile profile={profile} reviews={reviews} watchlist={watchlist} />
+                <MoviesProfile profile={profile} reviews={reviews} watchlist={watchlist} fetchWatchlist={fetchWatchlist}/>
             </div>
+            <ToastContainer />
         </div>
     )
 }

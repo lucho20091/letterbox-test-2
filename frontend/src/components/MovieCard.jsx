@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
-
-export default function MovieCard({ movie, type = 'movie'  }) {
+import { IoTrash, IoTrashOutline } from 'react-icons/io5'
+export default function MovieCard({ movie, type = 'movie', addToWatchList, deleteFromWatchlist }) {
     const navigate = useNavigate()
     return type === 'movie' ? (
         <div 
@@ -26,7 +26,7 @@ export default function MovieCard({ movie, type = 'movie'  }) {
                 </div>
             </div>
         </div>
-    ) : (
+    ) : type === 'watchlist' ? (
         <div className="group cursor-pointer">  
         <div  className="relative rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-2xl 
             aspect-[2/3] sm-aspect-[2/3]">
@@ -36,7 +36,23 @@ export default function MovieCard({ movie, type = 'movie'  }) {
                     <h2 className="text-sm sm:text-xl font-semibold text-white mb-1 sm:mb-2 line-clamp-2 text-center">{movie.title}</h2>
                 </div>
             </div>
+            <button className="absolute top-2 right-2 bg-red-600 px-1 md:px-2 py-1 text-white rounded-sm flex items-center gap-1 hover:bg-red-700 transition-all duration-300" onClick={(e) => deleteFromWatchlist(movie.imdbID, e)}>
+                <IoTrashOutline />
+                <span className="text-sm">Delete</span>
+            </button>
         </div>
     </div>
-    )
+    ) : type === 'search' ? (
+        <div className="group cursor-pointer" onClick={() => addToWatchList(movie)}>  
+        <div  className="relative rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-2xl 
+            aspect-[2/3] sm-aspect-[2/3]">
+            <img src={movie.Poster} alt={movie.Title} className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="absolute bottom-0 left-0 right-0 p-2 sm:p-4">
+                    <h2 className="text-sm sm:text-xl font-semibold text-white mb-1 sm:mb-2 line-clamp-2 text-center">{movie.Title} {movie.Year.substring(0,4)}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    ) : null
 }

@@ -55,6 +55,7 @@ const search_movie = async (req, res) => {
 const add_to_watchlist = async (req, res) => {
     try {
         const { username, imdbID, image, title } = req.body;
+        console.log(req.body)
         const existingMovie = await MovieWatchList.findOne({ username, imdbID });
         if (existingMovie) {
             return res.status(400).json({ message: 'Movie already in watchlist' });

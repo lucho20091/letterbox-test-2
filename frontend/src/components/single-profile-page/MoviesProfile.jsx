@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from "react"
 import ProfileReviews from "./profile-page-tabs/ProfileReviews"
 import ProfileWatchlist from "./profile-page-tabs/ProfileWatchlist"
 import ProfileSearch from "./profile-page-tabs/ProfileSearch"
-export default function MoviesProfile({ reviews, watchlist, profile }) {
+export default function MoviesProfile({ reviews, watchlist, profile, fetchWatchlist }) {
     const { userAuthenticated, loading: userLoading } = useContext(AuthContext)
     const [activeTab, setActiveTab] = useState('reviews')
 
@@ -24,8 +24,8 @@ export default function MoviesProfile({ reviews, watchlist, profile }) {
                 >Search Movies</button>}
             </div>
             {activeTab === 'reviews' && <ProfileReviews reviews={reviews} />}
-            {activeTab === 'watchlist' && <ProfileWatchlist watchlist={watchlist} />}
-            {activeTab === 'search' && <ProfileSearch />}
+            {activeTab === 'watchlist' && <ProfileWatchlist watchlist={watchlist} fetchWatchlist={fetchWatchlist}/>}
+            {activeTab === 'search' && <ProfileSearch fetchWatchlist={fetchWatchlist} username={userAuthenticated?.username}/>}
         </div>
     )
 }
