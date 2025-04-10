@@ -35,7 +35,7 @@ export default function MainCard({ movie, comments}) {
                     </div>
                     {comments?.length > 0 && (
                         <div className="flex items-center mb-2">
-                            <p className="text-white font-bold text-2xl mr-2">Community:</p>
+                            <p className="text-white font-bold text-2xl mr-2">People:</p>
                             <div className="flex items-center">
                                {Array.from({ length: Math.floor(Number(comments.reduce((acc, comment) => acc + Math.floor(comment.rating/2), 0)/comments.length)) }).map((_, index) => (
                                 <span 
