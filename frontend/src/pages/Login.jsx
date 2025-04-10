@@ -17,7 +17,6 @@ function Login() {
     e.preventDefault();
     setLoading(true);
     setError('');
-    console.log(formData)
     
     fetch(API === 'test' ? 'http://localhost:3000/api/login' : '/api/login', {
       method: 'POST',
@@ -47,7 +46,6 @@ function Login() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log(name, value)
     setFormData(prev => ({
       ...prev,
       [name]: value

@@ -8,13 +8,11 @@ export default function ProfileSearch({ fetchWatchlist, username }) {
 
     const handleSearch = async (e) => {
         e.preventDefault();
-        console.log(search)
         try{
             const response = await fetch(API === 'test' ? `http://localhost:3000/api/search/${search}` : `/api/search/${search}`, {
                 credentials: 'include'
             })
             const data = await response.json();
-            console.log(data)
             setMovies(data);
         } catch (error) {
             console.error("Error searching for movies:", error);
