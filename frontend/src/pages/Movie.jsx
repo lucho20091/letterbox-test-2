@@ -1,9 +1,9 @@
 import { useState, useEffect, useContext } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { API } from '../constants/api'
-import MainCard from '../components/movie/MainCard'
-import ReviewForm from '../components/movie/ReviewForm'
-import MovieComments from '../components/movie/MovieComments'
+import MainCard from '../components/movie-page/MainCard'
+import ReviewForm from '../components/movie-page/ReviewForm'
+import MovieComments from '../components/movie-page/MovieComments'
 import { AuthContext } from '../contexts/AuthContext'
 import { ToastContainer, toast } from 'react-toastify'
 export default function Movie() {
@@ -40,22 +40,21 @@ export default function Movie() {
         fetchMovie()
     }, [slug])
     // Fetch comments
-    useEffect(() => {
-        const fetchComments = async () => {
-            try {
-                const response = await fetch(API === 'test' ? `http://localhost:3000/api/comments/${slug}` : `/api/comments/${slug}`, {
-                    credentials: 'include'
-                })
-                if (!response.ok) {
-                    throw new Error('Comments not found')
-                }
-                const data = await response.json()
-                console.log(data)
-                setComments(data)
-            } catch (error) {
-                setError(error)
+    const fetchComments = async () => {
+        try {
+            const response = await fetch(API === 'test' ? `http://localhost:3000/api/comments/${slug}` : `/api/comments/${slug}`, {
+                credentials: 'include'
+            })
+            if (!response.ok) {
+                throw new Error('Comments not found')
             }
+            const data = await response.json()
+            setComments(data)
+        } catch (error) {
+            setError(error)
         }
+    }
+    useEffect(() => {
         fetchComments()
     }, [slug])
     // fetch user
@@ -84,12 +83,16 @@ export default function Movie() {
                 throw new Error('Failed to submit comment')
             }
             const data = await response.json()
-            setComments([...comments, data])    
+            fetchComments()  
             toast.success('Comment submitted successfully')
         } catch (error) {
             setError(error)
             toast.error('Failed to submit comment')
         }
+    }
+
+    const handleCommentDelete = (deleteCommentId) => {
+        setComments(comments.filter(comment => comment._id !== deleteCommentId))
     }
 
     if (loading) {
@@ -127,7 +130,7 @@ export default function Movie() {
                         handleChange={handleChange}
                         handleSubmit={handleSubmit}
                     />
-                    <MovieComments comments={comments} />
+                    <MovieComments comments={comments} fetchComments={fetchComments} />
                 </div>
             </div>
             <ToastContainer />

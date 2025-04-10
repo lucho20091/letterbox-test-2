@@ -75,6 +75,7 @@ export default function Header() {
                             <span className="ml-1">{userAuthenticated?.username}</span>
                         </Link>                  
                         <button 
+                            onClick={handleLogout}
                             className="px-3 py-2 rounded-md text-sm font-medium hover:bg-indigo-800/40 transition-colors">
                             Logout
                         </button>
