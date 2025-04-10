@@ -1,7 +1,8 @@
 import MovieCard from "../../MovieCard"
 import { toast } from "react-toastify"
 import { API } from "../../../constants/api"
-export default function ProfileWatchlist({ watchlist, fetchWatchlist }) {
+
+export default function ProfileWatchlist({ watchlist, fetchWatchlist, userAuthenticated }) {
 
     const deleteFromWatchlist = async (imdbID, e) => {
         e.preventDefault();
@@ -29,7 +30,7 @@ export default function ProfileWatchlist({ watchlist, fetchWatchlist }) {
     console.log(watchlist)
     return (
         <div className="grid py-4 md:py-8 gap-4 sm:gap-6 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-            {watchlist.map(movie => <MovieCard movie={movie} key={movie._id} type="watchlist" deleteFromWatchlist={deleteFromWatchlist}/>)}
+            {watchlist.map(movie => <MovieCard movie={movie} key={movie._id} type="watchlist" deleteFromWatchlist={deleteFromWatchlist} userAuthenticated={userAuthenticated}/>)}
         </div>
     )
 }

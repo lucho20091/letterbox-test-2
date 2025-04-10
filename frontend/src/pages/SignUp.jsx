@@ -17,7 +17,6 @@ function SignUp() {
     e.preventDefault();
     setLoading(true);
     setError('');
-    console.log(formData)
     
     fetch(API === 'test' ? 'http://localhost:3000/api/register' : '/api/register', {
       method: 'POST',

@@ -145,7 +145,7 @@ export default function Header() {
                                 <img    
                                 src={userAuthenticated?.image}
                                 alt="profile picture"
-                                className="w-6 h-6 rounded-full border-4 border-purple-400 "
+                                className="w-6 h-6 rounded-full border-2 border-purple-400 "
                             />
                             <span className="ml-1">{userAuthenticated?.username}</span>
                             </Link>

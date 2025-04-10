@@ -8,6 +8,7 @@ import SignUp from './pages/SignUp'
 import Movie from './pages/Movie'
 import Profiles from './pages/Profiles'
 import Profile from './pages/Profile'
+import Watchlist from './pages/Watchlist'
 function App() {
   return (
     <div className="flex flex-col h-dvh">
@@ -19,6 +20,7 @@ function App() {
         <Route path={ROUTES.MOVIE} element={<Movie />} />
         <Route path={ROUTES.PROFILES} element={<Profiles />} />
         <Route path={ROUTES.PROFILE} element={<Profile />} />
+        <Route path={ROUTES.WATCHLIST} element={<Watchlist />} />
       </Routes>
     </div>
   )
