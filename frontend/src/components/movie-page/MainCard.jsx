@@ -21,7 +21,7 @@ export default function MainCard({ movie, comments}) {
                 <div className="pt-4 md:p-8 flex flex-col items-start md:items-start">
                     <h1 className="text-white text-2xl font-bold mb-2">{movie.titleYear}</h1>
                     <div className="flex items-center mb-2">
-                        <p className="text-white font-bold text-2xl mr-2">Juli:</p>
+                        <p className="text-white font-bold text-2xl mr-2">Mine:</p>
                         <div className="flex items-center">
                             {Array.from({ length: Math.floor(movie.rating/2)}).map((_,index) => (
                                 <span 
@@ -35,7 +35,7 @@ export default function MainCard({ movie, comments}) {
                     </div>
                     {comments?.length > 0 && (
                         <div className="flex items-center mb-2">
-                            <p className="text-white font-bold text-2xl mr-2">Chat:</p>
+                            <p className="text-white font-bold text-2xl mr-2">Community:</p>
                             <div className="flex items-center">
                                {Array.from({ length: Math.floor(Number(comments.reduce((acc, comment) => acc + Math.floor(comment.rating/2), 0)/comments.length)) }).map((_, index) => (
                                 <span 
