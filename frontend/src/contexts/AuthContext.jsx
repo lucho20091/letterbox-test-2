@@ -13,7 +13,6 @@ export const AuthProvider = ({ children }) => {
                 const user = await getUser()
                 setUserAuthenticated(user)
             } catch (error) {
-                console.error('Error fetching user:', error)
             } finally {
                 setLoading(false)
             }
