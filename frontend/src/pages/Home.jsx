@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { API } from '../constants/api'
 import MovieCard from '../components/MovieCard'
+import Loading from '../components/Loading'
 export default function Home() {
 
     const [movies, setMovies] = useState([])
@@ -27,7 +28,7 @@ export default function Home() {
     }, [])
 
     if (loading) {
-        return <div>Loading...</div>
+        return <Loading />
     }
 
     if (error) {

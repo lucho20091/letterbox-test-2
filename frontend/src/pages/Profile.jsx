@@ -4,6 +4,7 @@ import { API } from '../constants/api'
 import ProfileData from '../components/single-profile-page/ProfileData'
 import MoviesProfile from '../components/single-profile-page/MoviesProfile'
 import { ToastContainer } from 'react-toastify'
+import Loading from '../components/Loading'
 export default function Profile(){
     const [profile, setProfile] = useState(null)
     const [reviews, setReviews] = useState([])
@@ -53,7 +54,7 @@ export default function Profile(){
     }, [username])
 
     if (loading) {
-        return <div>Loading...</div>
+        return <Loading />
     }
 
     if (error) {

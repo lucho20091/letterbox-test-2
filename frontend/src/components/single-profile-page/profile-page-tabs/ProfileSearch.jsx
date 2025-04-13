@@ -52,11 +52,11 @@ export default function ProfileSearch({ fetchWatchlist, username }) {
         <div className="py-4 md:py-8">
             <form 
             onSubmit={handleSearch}
-            className="max-w-md mx-auto bg-gradient-to-br from-indigo-600 to-violet-950/80 text-white shadow-lg p-4 rounded-lg flex items-center justify-between gap-2">
+            className="max-w-md mx-auto bg-gradient-to-r from-indigo-950 to-violet-950 text-white shadow-lg p-4 rounded-lg flex items-center justify-between gap-2">
                 <input 
                     type="text" 
                     placeholder="Search for a movie" 
-                    className="w-full p-2 rounded-lg bg-indigo-950/50 rounded-lg text-white placeholder-indigo-500 transition-all duration-300 focus:outline-none" 
+                    className="w-full p-2 rounded-lg bg-indigo-800 rounded-lg text-white placeholder-indigo-500 transition-all duration-300 focus:outline-none" 
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
                     name="title"

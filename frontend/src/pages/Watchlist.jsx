@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { API } from '../constants/api'
 import MovieCard from '../components/MovieCard'
+import Loading from '../components/Loading'
 
 export default function Watchlist() {
     const [watchlist, setWatchlist] = useState([])
@@ -30,7 +31,7 @@ export default function Watchlist() {
 
 
     if (loading) {
-        return <div>Loading...</div>
+        return <Loading />
     }
     
     return (

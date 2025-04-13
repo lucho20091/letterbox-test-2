@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { API } from '../constants/api'
 import { Link } from 'react-router-dom'
 import ProfileCard from '../components/profiles-page/ProfileCard'
+import Loading from '../components/Loading'
 export default function Profiles(){
     const [profiles, setProfiles] = useState([])
     const [loading, setLoading] = useState(true)
@@ -29,7 +30,7 @@ export default function Profiles(){
     }, [])
 
     if (loading) {
-        return <div>Loading...</div>
+        return <Loading />
     }
 
     if (error) {

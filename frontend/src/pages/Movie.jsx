@@ -6,6 +6,7 @@ import ReviewForm from '../components/movie-page/ReviewForm'
 import MovieComments from '../components/movie-page/MovieComments'
 import { AuthContext } from '../contexts/AuthContext'
 import { ToastContainer, toast } from 'react-toastify'
+import Loading from '../components/Loading'
 export default function Movie() {
     const { slug } = useParams()
     const [movie, setMovie] = useState(null)
@@ -96,7 +97,7 @@ export default function Movie() {
     }
 
     if (loading) {
-        return <div>Loading...</div>
+        return <Loading />
     }
 
     if (!movie) {
