@@ -13,11 +13,11 @@ export default function MoviesProfile({ reviews, watchlist, profile, fetchWatchl
                 <button 
                 onClick={() => setActiveTab('reviews')}
                 className={`${activeTab === 'reviews' ? 'text-purple-600 border-b-2 border-purple-600' : 'text-indigo-600 hover:text-indigo-400'} px-4 py-2 font-medium text-sm sm:text-lg transition-colors duration-300`}
-                >reviews</button>
+                >Reviews</button>
                 <button 
                 onClick={() => setActiveTab('watchlist')}
                 className={`${activeTab === 'watchlist' ? 'text-purple-600 border-b-2 border-purple-600' : 'text-indigo-600 hover:text-indigo-400'} px-4 py-2 font-medium text-sm sm:text-lg transition-colors duration-300`}
-                >watchlist</button>
+                >Watchlist</button>
                 {userAuthenticated?.username === profile.username && <button 
                 onClick={() => setActiveTab('search')}
                 className={`${activeTab === 'search' ? 'text-purple-600 border-b-2 border-purple-600' : 'text-indigo-600 hover:text-indigo-400'} px-4 py-2 font-medium text-sm sm:text-lg transition-colors duration-300`}
