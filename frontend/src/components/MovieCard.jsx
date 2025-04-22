@@ -36,7 +36,7 @@ export default function MovieCard({ movie, type = 'movie', addToWatchList, delet
                     <h2 className="text-sm sm:text-xl font-semibold text-white mb-1 sm:mb-2 line-clamp-2 text-center">{movie.title}</h2>
                 </div>
             </div>
-            {userAuthenticated.username === profile.username && <button className="absolute top-2 right-2 bg-red-600 px-1 md:px-2 py-1 text-white rounded-sm flex items-center gap-1 hover:bg-red-700 transition-all duration-300" onClick={(e) => deleteFromWatchlist(movie.imdbID, e)}>
+            {userAuthenticated && userAuthenticated?.username === profile?.username && <button className="absolute top-2 right-2 bg-red-600 px-1 md:px-2 py-1 text-white rounded-sm flex items-center gap-1 hover:bg-red-700 transition-all duration-300" onClick={(e) => deleteFromWatchlist(movie.imdbID, e)}>
                 <IoTrashOutline />
                 <span className="text-sm">Delete</span>
             </button>}
