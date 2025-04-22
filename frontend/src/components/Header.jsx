@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { useState, useEffect, useContext } from 'react'
 import { AuthContext } from '../contexts/AuthContext'
-import { API } from '../constants/api'
+
 export default function Header() {
     const [isLoggedIn, setIsLoggedIn] = useState(false)
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -20,7 +20,7 @@ export default function Header() {
 
     const handleLogout = async () => {
         try {
-          const response = await fetch(API === 'test' ? 'http://localhost:3000/api/logout' : '/api/logout', {
+          const response = await fetch('/api/logout', {
             method: 'POST',
             credentials: 'include'
           });

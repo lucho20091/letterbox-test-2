@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { API } from '../constants/api'
+
 import ProfileData from '../components/single-profile-page/ProfileData'
 import MoviesProfile from '../components/single-profile-page/MoviesProfile'
 import { ToastContainer } from 'react-toastify'
@@ -16,7 +16,7 @@ export default function Profile(){
         const fetchProfile = async () => {  
             try{
                 setLoading(true)
-                const response = await fetch(API === 'test' ? `http://localhost:3000/api/profile/${username}` : `/api/profile/${username}`, {
+                const response = await fetch(`/api/profile/${username}`, {
                     credentials: 'include'
                 })
                 if (!response.ok) {
@@ -37,7 +37,7 @@ export default function Profile(){
 
     async function fetchWatchlist(){
         try{
-            const response = await fetch(API === 'test' ? `http://localhost:3000/api/watchlist/${username}` : `/api/watchlist/${username}`, {
+            const response = await fetch(`/api/watchlist/${username}`, {
                 credentials: 'include'
             })
             if (!response.ok) {

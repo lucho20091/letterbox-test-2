@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { API } from '../constants/api'
+
 import { Link } from 'react-router-dom'
 import ProfileCard from '../components/profiles-page/ProfileCard'
 import Loading from '../components/Loading'
@@ -12,7 +12,7 @@ export default function Profiles(){
         const fetchProfiles = async () => {
             try{
                 setLoading(true)
-                const response = await fetch(API === 'test' ? 'http://localhost:3000/api/profiles' : '/api/profiles', {
+                const response = await fetch('/api/profiles', {
                     credentials: 'include'
                 })
                 if (!response.ok) {

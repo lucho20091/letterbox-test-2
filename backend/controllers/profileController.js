@@ -27,11 +27,9 @@ const get_User = async (username) => {
 
 const get_all_profiles = async (req, res) => {
     try {
-        // Get all unique usernames from comments
-        const uniqueUsernames = await Comment.distinct('username');
-        
+
         // Get user profiles for those usernames
-        const profiles = await User.find({ username: { $in: uniqueUsernames } })
+        const profiles = await User.find()
             .select('username image');
         res.status(200).json(profiles);
     } catch (error) {

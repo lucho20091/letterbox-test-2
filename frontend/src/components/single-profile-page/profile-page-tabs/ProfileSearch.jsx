@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { API } from "../../../constants/api";
 import MovieCard from "../../MovieCard";
 import { toast } from "react-toastify";
 export default function ProfileSearch({ fetchWatchlist, username }) {
@@ -9,7 +8,7 @@ export default function ProfileSearch({ fetchWatchlist, username }) {
     const handleSearch = async (e) => {
         e.preventDefault();
         try{
-            const response = await fetch(API === 'test' ? `http://localhost:3000/api/search/${search}` : `/api/search/${search}`, {
+            const response = await fetch(`/api/search/${search}`, {
                 credentials: 'include'
             })
             const data = await response.json();
@@ -21,7 +20,7 @@ export default function ProfileSearch({ fetchWatchlist, username }) {
 
     const addToWatchList = async (movie) => {
         try{
-            const response = await fetch(API === 'test' ? `http://localhost:3000/api/watchlist` : `/api/watchlist`, {
+            const response = await fetch(`/api/watchlist`, {
                 method: 'POST',
                 credentials: 'include',
                 headers: {

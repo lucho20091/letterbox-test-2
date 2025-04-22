@@ -1,6 +1,5 @@
 import MovieCard from "../../MovieCard"
 import { toast } from "react-toastify"
-import { API } from "../../../constants/api"
 
 export default function ProfileWatchlist({ watchlist, fetchWatchlist, userAuthenticated }) {
 
@@ -12,7 +11,7 @@ export default function ProfileWatchlist({ watchlist, fetchWatchlist, userAuthen
         }
 
         try{
-            const response = await fetch(API === 'test' ? `http://localhost:3000/api/watchlist/${imdbID}` : `/api/watchlist/${imdbID}`, {
+            const response = await fetch(`/api/watchlist/${imdbID}`, {
                 method: 'DELETE',
                 credentials: 'include'
             })

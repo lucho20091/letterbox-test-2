@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { API } from '../constants/api'
+
 import MovieCard from '../components/MovieCard'
 import Loading from '../components/Loading'
 export default function Home() {
@@ -13,7 +13,7 @@ export default function Home() {
     useEffect(() => {
         const fetchMovies = async () => {
             try {
-                const response = await fetch(API === 'test' ? 'http://localhost:3000/api/movies' : '/api/movies', {
+                const response = await fetch('/api/movies', {
                     credentials: 'include'
                 })
                 const data = await response.json()

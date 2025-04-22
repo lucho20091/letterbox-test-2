@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { API } from '../constants/api';
+;
 import Form from '../components/Form';
 
 function SignUp() {
@@ -18,7 +18,7 @@ function SignUp() {
     setLoading(true);
     setError('');
     
-    fetch(API === 'test' ? 'http://localhost:3000/api/register' : '/api/register', {
+    fetch('/api/register', {
       method: 'POST',
       body: JSON.stringify(formData),
       headers: {

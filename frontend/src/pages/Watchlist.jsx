@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { API } from '../constants/api'
+
 import MovieCard from '../components/MovieCard'
 import Loading from '../components/Loading'
 
@@ -13,7 +13,7 @@ export default function Watchlist() {
     useEffect(() => {
         const fetchWatchlist = async () => {
             try {
-                const response = await fetch(API === 'test' ? 'http://localhost:3000/api/watchlist' : '/api/watchlist', {
+                const response = await fetch('/api/watchlist', {
                     credentials: 'include'
                 })
                 const data = await response.json()

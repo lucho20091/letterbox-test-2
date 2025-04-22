@@ -1,7 +1,6 @@
-import { API } from '../constants/api';
 const getUser = async () => {
     try{
-        const response = await fetch(API === 'test' ? 'http://localhost:3000/api/user' : '/api/user', {
+        const response = await fetch('/api/user', {
             credentials: 'include',
             headers: {
                 'Content-Type': 'application/json'

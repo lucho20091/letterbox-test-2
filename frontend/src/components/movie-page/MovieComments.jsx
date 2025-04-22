@@ -2,7 +2,6 @@ import { useContext, useState, useEffect } from 'react'
 import { IoTrashOutline } from 'react-icons/io5'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
-import { API } from '../../constants/api'
 import { AuthContext } from '../../contexts/AuthContext'
 export default function MovieComments({ comments, fetchComments }) {
     const { userAuthenticated, loading: userLoading } = useContext(AuthContext)
@@ -18,7 +17,7 @@ export default function MovieComments({ comments, fetchComments }) {
     
     const handleDelete = async (commentId) => {
         try {
-            const response = await fetch(API === 'test' ? `http://localhost:3000/api/comments/${commentId}` : `api/comments/${commentId}`, {
+            const response = await fetch(`/api/comments/${commentId}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',

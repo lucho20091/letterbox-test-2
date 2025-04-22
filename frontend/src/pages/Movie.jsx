@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import { API } from '../constants/api'
+
 import MainCard from '../components/movie-page/MainCard'
 import ReviewForm from '../components/movie-page/ReviewForm'
 import MovieComments from '../components/movie-page/MovieComments'
@@ -26,7 +26,7 @@ export default function Movie() {
     useEffect(() => {
         const fetchMovie = async () => {
             try{
-                const response = await fetch(API === 'test' ? `http://localhost:3000/api/movies/${slug}` : `/api/movies/${slug}`)
+                const response = await fetch(`/api/movies/${slug}`)
                 if (!response.ok) {
                     throw new Error('Movie not found')
                 }
@@ -43,7 +43,7 @@ export default function Movie() {
     // Fetch comments
     const fetchComments = async () => {
         try {
-            const response = await fetch(API === 'test' ? `http://localhost:3000/api/comments/${slug}` : `/api/comments/${slug}`, {
+            const response = await fetch(`/api/comments/${slug}`, {
                 credentials: 'include'
             })
             if (!response.ok) {
@@ -72,7 +72,7 @@ export default function Movie() {
     async function handleSubmit(e){
         e.preventDefault()
         try{
-            const response = await fetch(API === 'test' ? `http://localhost:3000/api/comments/${slug}` : `/api/comments/${slug}`, {
+            const response = await fetch(`/api/comments/${slug}`, {
                 method: 'POST',
                 credentials: 'include',
                 headers: {
