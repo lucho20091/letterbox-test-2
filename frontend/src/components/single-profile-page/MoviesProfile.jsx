@@ -24,7 +24,7 @@ export default function MoviesProfile({ reviews, watchlist, profile, fetchWatchl
                 >Search Movies</button>}
             </div>
             {activeTab === 'reviews' && <ProfileReviews reviews={reviews} />}
-            {activeTab === 'watchlist' && <ProfileWatchlist watchlist={watchlist} fetchWatchlist={fetchWatchlist} userAuthenticated={userAuthenticated}/>}
+            {activeTab === 'watchlist' && <ProfileWatchlist watchlist={watchlist} fetchWatchlist={fetchWatchlist} userAuthenticated={userAuthenticated} profile={profile}/>}
             {activeTab === 'search' && <ProfileSearch fetchWatchlist={fetchWatchlist} username={userAuthenticated?.username}/>}
         </div>
     )
